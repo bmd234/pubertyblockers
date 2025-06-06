@@ -293,24 +293,10 @@ function FlowchartDiagram({ activeNodeId, onNodeClick }) {
   };
 
   const arrows = [
-  // From Level 1
-  ["puberty-blockers", "who-uses-them"],
-  ["puberty-blockers", "are-they-safe"],
-  ["puberty-blockers", "how-do-they-work"],
-
-  // WHO USES THEM → SOCIAL EFFECTS, CRITERIA, PHYSICAL EFFECTS
-  ["who-uses-them", "social-effects"],
-  ["who-uses-them", "criteria-prescription"],
-  ["who-uses-them", "physical-effects"],
-
-  // ARE THEY SAFE → SIDE EFFECTS, WILL CHILD REGRET IT?
-  ["are-they-safe", "side-effects"],
-  ["are-they-safe", "will-child-regret"],
-
-  // HOW DO THEY WORK → TYPES, NEXT STEPS, ADMINISTERED
-  ["how-do-they-work", "types-blockers"],
-  ["how-do-they-work", "next-steps"],
-  ["how-do-they-work", "how-administered"]
+    ["puberty-blockers", "who-uses-them"],
+    ["puberty-blockers", "are-they-safe"],
+    ["puberty-blockers", "how-do-they-work"],
+    // Add more connections here if needed
 ];
 
   return (
