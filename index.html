@@ -301,40 +301,6 @@
               </div>
             );
           })}
-          {   {/* SVG for connecting lines with arrows */}
-                    <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 5 }}>
-                        <defs>
-                            <marker id="arrowhead" markerWidth="10" markerHeight="7" 
-                                refX="9" refY="3.5" orient="auto">
-                                <polygon points="0 0, 10 3.5, 0 7" fill="#6B7280" />
-                            </marker>
-                        </defs>
-                        
-                        {/* 3 arrows from PUBERTY BLOCKERS to main categories */}
-                        <line x1="50%" y1="50" x2="30%" y2="90" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        <line x1="50%" y1="50" x2="50%" y2="82" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        <line x1="50%" y1="50" x2="75%" y2="90" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        
-                        {/* Additional arrows for subcategories */}
-                        <line x1="20%" y1="130" x2="15%" y2="165" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        <line x1="20%" y1="130" x2="25%" y2="165" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        <line x1="20%" y1="130" x2="35%" y2="165" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        
-                        <line x1="50%" y1="140" x2="43%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        <line x1="50%" y1="140" x2="57%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        
-                        <line x1="80%" y1="140" x2="70%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        <line x1="80%" y1="140" x2="80%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        <line x1="80%" y1="140" x2="90%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        
-                        {/* 5 arrows to bottom level */}
-                        <line x1="10%" y1="230" x2="15%" y2="290" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        <line x1="30%" y1="230" x2="35%" y2="290" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        <line x1="43%" y1="230" x2="55%" y2="290" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        <line x1="57%" y1="230" x2="75%" y2="290" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        <line x1="90%" y1="230" x2="95%" y2="290" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                    </svg>
-}
         </div>
       );
     }
