@@ -1,1 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puberty Blockers Educational Flowchart</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState } = React;
+        
+        // Flowchart data
+        const flowchartNodes = [
+            { id: "puberty-blockers", label: "PUBERTY BLOCKERS", level: 1 },
+            { id: "who-uses-them", label: "WHO USES THEM?", level: 2, category: "left" },
+            { id: "are-they-safe", label: "ARE THEY SAFE?", level: 2, category: "center" },
+            { id: "how-do-they-work", label: "HOW DO THEY WORK?", level: 2, category: "right" },
+            { id: "social-effects", label: "SOCIAL EFFECTS", level: 3, category: "left" },
+            { id: "criteria-prescription", label: "CRITERIA FOR PRESCRIPTION", level: 3, category: "left" },
+            { id: "physical-effects", label: "PHYSICAL EFFECTS", level: 3, category: "left" },
+            { id: "side-effects", label: "SIDE EFFECTS", level: 3, category: "center" },
+            { id: "will-child-regret", label: "WILL MY CHILD REGRET IT?", level: 3, category: "center" },
+            { id: "types-blockers", label: "TYPES OF BLOCKERS", level: 3, category: "right" },
+            { id: "next-steps", label: "NEXT STEPS", level: 3, category: "right" },
+            { id: "how-administered", label: "HOW IS IT ADMINISTERED?", level: 3, category: "right" },
+            { id: "where-how-get", label: "WHERE/HOW DO I GET THEM?", level: 4 },
+            { id: "changes-permanent", label: "ARE THE CHANGES PERMANENT?", level: 4 },
+            { id: "mediating-side-effects", label: "MEDIATING SIDE EFFECTS", level: 4 },
+            { id: "other-options", label: "OTHER OPTIONS", level: 4 },
+            { id: "how-frequently", label: "HOW FREQUENTLY?", level: 4 },
+        ];
 
+        const contentSections = [
+            {
+                id: "puberty-blockers",
+                title: "PUBERTY BLOCKERS",
+                content: {
+                    bullets: [
+                        "Navigating gender-affirming care can be complex, overwhelming, and at times, even feel frightening. That's why our team is here to support you by answering any questions you may have about the purpose, mechanisms, effects, and safety of Puberty Blockers.",
+                        "To use the flowchart, click on the questions that are most relevant to you to gain a clearer understanding of the care provided through puberty blockers."
+                    ]
+                }
+            },
+            {
+                id: "who-uses-them",
+                title: "WHO USES THEM?",
+                content: {
+                    text: "Puberty blockers are primarily used by transgender and gender non-conforming youth who experience gender dysphoria during the onset of puberty.",
+                    bullets: [
+                        "Young people who identify as transgender",
+                        "Those experiencing gender dysphoria",
+                        "Youth who need time to explore their gender identity",
+                        "Individuals seeking to prevent irreversible pubertal changes"
+                    ]
+                }
+            }
+        ];
+
+        function FlowchartButton({ node, isActive, onClick }) {
+            const colorClasses = isActive 
+                ? "bg-purple-700 hover:bg-purple-800" 
+                : "bg-gray-400 hover:bg-gray-500";
+
+            return (
+                <button
+                    className={`px-3 py-2 rounded-full font-medium text-white text-xs transition-all duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 cursor-pointer text-center whitespace-nowrap ${colorClasses}`}
+                    onClick={onClick}
+                >
+                    {node.label}
+                </button>
+            );
+        }
+
+        function ContentDisplay({ content, isActive }) {
+            if (!isActive) return null;
+
+            return (
+                <div className="bg-purple-700 text-white p-8 rounded-3xl max-w-4xl mx-auto mt-8">
+                    <h2 className="text-3xl font-bold mb-6 text-center">{content.title}</h2>
+                    
+                    <div className="space-y-6">
+                        {content.content.text && (
+                            <p className="text-lg mb-4 text-center font-medium">
+                                {content.content.text}
+                            </p>
+                        )}
+                        
+                        {content.content.bullets && (
+                            <ul className="space-y-3 text-lg list-disc list-inside">
+                                {content.content.bullets.map((bullet, index) => (
+                                    <li key={index}>{bullet}</li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                </div>
+            );
+        }
+
+        function FlowchartDiagram({ activeNodeId, onNodeClick }) {
+            return (
+                <div className="relative mb-12 p-8 min-h-[400px] max-w-7xl mx-auto">
+                    {/* SVG for connecting lines with arrows */}
+                    <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 5 }}>
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                                refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#6B7280" />
+                            </marker>
+                        </defs>
+                        
+                        {/* 3 arrows from PUBERTY BLOCKERS to main categories */}
+                        <line x1="50%" y1="50" x2="20%" y2="110" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="50%" y1="50" x2="50%" y2="110" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="50%" y1="50" x2="80%" y2="110" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        
+                        {/* Additional arrows for subcategories */}
+                        <line x1="20%" y1="140" x2="10%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="20%" y1="140" x2="20%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="20%" y1="140" x2="30%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        
+                        <line x1="50%" y1="140" x2="43%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="50%" y1="140" x2="57%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        
+                        <line x1="80%" y1="140" x2="70%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="80%" y1="140" x2="80%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="80%" y1="140" x2="90%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        
+                        {/* 5 arrows to bottom level */}
+                        <line x1="10%" y1="230" x2="15%" y2="290" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="30%" y1="230" x2="35%" y2="290" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="43%" y1="230" x2="55%" y2="290" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="57%" y1="230" x2="75%" y2="290" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="90%" y1="230" x2="95%" y2="290" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                    </svg>
+
+                    {/* Level 1 - PUBERTY BLOCKERS */}
+                    <div className="absolute top-4 left-1/2 transform -translate-x-1/2" style={{ zIndex: 10 }}>
+                        <FlowchartButton
+                            node={flowchartNodes.find(n => n.id === 'puberty-blockers')}
+                            isActive={activeNodeId === 'puberty-blockers'}
+                            onClick={() => onNodeClick('puberty-blockers')}
+                        />
+                    </div>
+
+                    {/* Level 2 - Main Categories */}
+                    <div className="absolute top-20" style={{ zIndex: 10, width: '100%' }}>
+                        <div className="absolute left-[20%] transform -translate-x-1/2">
+                            <FlowchartButton
+                                node={flowchartNodes.find(n => n.id === 'who-uses-them')}
+                                isActive={activeNodeId === 'who-uses-them'}
+                                onClick={() => onNodeClick('who-uses-them')}
+                            />
+                        </div>
+                        <div className="absolute left-[50%] transform -translate-x-1/2">
+                            <FlowchartButton
+                                node={flowchartNodes.find(n => n.id === 'are-they-safe')}
+                                isActive={activeNodeId === 'are-they-safe'}
+                                onClick={() => onNodeClick('are-they-safe')}
+                            />
+                        </div>
+                        <div className="absolute left-[80%] transform -translate-x-1/2">
+                            <FlowchartButton
+                                node={flowchartNodes.find(n => n.id === 'how-do-they-work')}
+                                isActive={activeNodeId === 'how-do-they-work'}
+                                onClick={() => onNodeClick('how-do-they-work')}
+                            />
+                        </div>
+                    </div>
+
+                    {/* Level 3 - Sub Categories */}
+                    <div className="absolute top-40" style={{ zIndex: 10, width: '100%' }}>
+                        <div className="absolute left-[10%] transform -translate-x-1/2">
+                            <FlowchartButton
+                                node={flowchartNodes.find(n => n.id === 'social-effects')}
+                                isActive={activeNodeId === 'social-effects'}
+                                onClick={() => onNodeClick('social-effects')}
+                            />
+                        </div>
+                        <div className="absolute left-[20%] transform -translate-x-1/2">
+                            <FlowchartButton
+                                node={flowchartNodes.find(n => n.id === 'criteria-prescription')}
+                                isActive={activeNodeId === 'criteria-prescription'}
+                                onClick={() => onNodeClick('criteria-prescription')}
+                            />
+                        </div>
+                        <div className="absolute left-[30%] transform -translate-x-1/2">
+                            <FlowchartButton
+                                node={flowchartNodes.find(n => n.id === 'physical-effects')}
+                                isActive={activeNodeId === 'physical-effects'}
+                                onClick={() => onNodeClick('physical-effects')}
+                            />
+                        </div>
+                        <div className="absolute left-[43%] transform -translate-x-1/2">
+                            <FlowchartButton
+                                node={flowchartNodes.find(n => n.id === 'side-effects')}
+                                isActive={activeNodeId === 'side-effects'}
+                                onClick={() => onNodeClick('side-effects')}
+                            />
+                        </div>
+                        <div className="absolute left-[57%] transform -translate-x-1/2">
+                            <FlowchartButton
+                                node={flowchartNodes.find(n => n.id === 'will-child-regret')}
+                                isActive={activeNodeId === 'will-child-regret'}
+                                onClick={() => onNodeClick('will-child-regret')}
+                            />
+                        </div>
+                        <div className="absolute left-[70%] transform -translate-x-1/2">
+                            <FlowchartButton
+                                node={flowchartNodes.find(n => n.id === 'types-blockers')}
+                                isActive={activeNodeId === 'types-blockers'}
+                                onClick={() => onNodeClick('types-blockers')}
+                            />
+                        </div>
+                        <div className="absolute left-[80%] transform -translate-x-1/2">
+                            <FlowchartButton
+                                node={flowchartNodes.find(n => n.id === 'next-steps')}
+                                isActive={activeNodeId === 'next-steps'}
+                                onClick={() => onNodeClick('next-steps')}
+                            />
+                        </div>
+                        <div className="absolute left-[90%] transform -translate-x-1/2">
+                            <FlowchartButton
+                                node={flowchartNodes.find(n => n.id === 'how-administered')}
+                                isActive={activeNodeId === 'how-administered'}
+                                onClick={() => onNodeClick('how-administered')}
+                            />
+                        </div>
+                    </div>
+
+                    {/* Level 4 - Bottom row */}
+                    <div className="absolute top-64" style={{ zIndex: 10, width: '100%' }}>
+                        <div className="absolute left-[15%] transform -translate-x-1/2">
+                            <FlowchartButton
+                                node={flowchartNodes.find(n => n.id === 'where-how-get')}
+                                isActive={activeNodeId === 'where-how-get'}
+                                onClick={() => onNodeClick('where-how-get')}
+                            />
+                        </div>
+                        <div className="absolute left-[35%] transform -translate-x-1/2">
+                            <FlowchartButton
+                                node={flowchartNodes.find(n => n.id === 'changes-permanent')}
+                                isActive={activeNodeId === 'changes-permanent'}
+                                onClick={() => onNodeClick('changes-permanent')}
+                            />
+                        </div>
+                        <div className="absolute left-[55%] transform -translate-x-1/2">
+                            <FlowchartButton
+                                node={flowchartNodes.find(n => n.id === 'mediating-side-effects')}
+                                isActive={activeNodeId === 'mediating-side-effects'}
+                                onClick={() => onNodeClick('mediating-side-effects')}
+                            />
+                        </div>
+                        <div className="absolute left-[75%] transform -translate-x-1/2">
+                            <FlowchartButton
+                                node={flowchartNodes.find(n => n.id === 'other-options')}
+                                isActive={activeNodeId === 'other-options'}
+                                onClick={() => onNodeClick('other-options')}
+                            />
+                        </div>
+                        <div className="absolute left-[95%] transform -translate-x-1/2">
+                            <FlowchartButton
+                                node={flowchartNodes.find(n => n.id === 'how-frequently')}
+                                isActive={activeNodeId === 'how-frequently'}
+                                onClick={() => onNodeClick('how-frequently')}
+                            />
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        function FlowchartApp() {
+            const [activeNodeId, setActiveNodeId] = useState('puberty-blockers');
+            const activeContent = contentSections.find(section => section.id === activeNodeId);
+
+            return (
+                <div className="min-h-screen py-8 px-4 bg-gray-50">
+                    <div className="max-w-7xl mx-auto">
+                        <FlowchartDiagram activeNodeId={activeNodeId} onNodeClick={setActiveNodeId} />
+                        {activeContent && <ContentDisplay content={activeContent} isActive={true} />}
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<FlowchartApp />, document.getElementById('root'));
+    </script>
+</body>
+</html>
