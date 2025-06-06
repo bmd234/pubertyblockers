@@ -271,7 +271,7 @@ function FlowchartDiagram({ activeNodeId, onNodeClick }) {
     "who-uses-them": 20,
     "are-they-safe": 50,
     "how-do-they-work": 80,
-    "social-effects": 0,
+    "social-effects": 1,
     "criteria-prescription": 15,
     "physical-effects": 30,
     "side-effects": 43,
@@ -297,6 +297,9 @@ function FlowchartDiagram({ activeNodeId, onNodeClick }) {
     ["puberty-blockers", "are-they-safe"],
     ["puberty-blockers", "how-do-they-work"],
     ["who-uses-them", "social-effects"], 
+    ["who-uses-them", "criteria-prescription"],
+    ["who-uses-them", "physical-effects"], 
+    
     // Add more connections here if needed
 ];
 
