@@ -271,18 +271,18 @@ function FlowchartDiagram({ activeNodeId, onNodeClick }) {
     "who-uses-them": 20,
     "are-they-safe": 50,
     "how-do-they-work": 80,
-    "social-effects": 1,
-    "criteria-prescription": 15,
-    "physical-effects": 30,
+    "social-effects": 2,
+    "criteria-prescription": 16,
+    "physical-effects": 31,
     "side-effects": 43,
     "will-child-regret": 57,
-    "types-blockers": 75,
-    "next-steps": 88,
-    "how-administered": 100,
-    "where-how-get": 15,
-    "changes-permanent": 35,
-    "mediating-side-effects": 55,
-    "other-options": 75,
+    "types-blockers": 72,
+    "next-steps": 85,
+    "how-administered": 96,
+    "where-how-get": 5,
+    "changes-permanent": 25,
+    "mediating-side-effects": 45,
+    "other-options": 60,
     "how-frequently": 95
   };
 
@@ -299,11 +299,16 @@ function FlowchartDiagram({ activeNodeId, onNodeClick }) {
     ["who-uses-them", "social-effects"], 
     ["who-uses-them", "criteria-prescription"],
     ["who-uses-them", "physical-effects"], 
+    ["criteria-prescription", "where-how-get"],
     ["are-they-safe", "side-effects"], 
     ["are-they-safe", "will-child-regret"],
     ["how-do-they-work", "types-blockers"], 
     ["how-do-they-work", "next-steps"],
     ["how-do-they-work", "how-administered"],
+    ["side-effects", "mediating-side-effects"], 
+    ["will-child-regret", "other-options"],
+    ["how-administered", "how-frequently"], 
+    
     
     // Add more connections here if needed
 ];
