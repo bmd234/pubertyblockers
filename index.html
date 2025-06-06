@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>Add commentMore actions
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,6 +18,13 @@
             -moz-osx-font-smoothing: grayscale;
         }
     </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Puberty Blockers Educational Flowchart</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <div id="root"></div>
@@ -69,8 +76,94 @@
                         "Individuals seeking to prevent irreversible pubertal changes"
                     ]
                 }
-            },
- {Add commentMore actions
+            }
+        ];
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState } = React;
+
+        function FlowchartButton({ node, isActive, onClick }) {
+            const colorClasses = isActive 
+                ? "bg-purple-700 hover:bg-purple-800" 
+                : "bg-gray-400 hover:bg-gray-500";
+    const flowchartNodes = [
+      { id: "puberty-blockers", label: "PUBERTY BLOCKERS", level: 1 },
+      { id: "who-uses-them", label: "WHO USES THEM?", level: 2 },
+      { id: "are-they-safe", label: "ARE THEY SAFE?", level: 2 },
+      { id: "how-do-they-work", label: "HOW DO THEY WORK?", level: 2 },
+      { id: "social-effects", label: "SOCIAL EFFECTS", level: 3 },
+      { id: "criteria-prescription", label: "CRITERIA FOR PRESCRIPTION", level: 3 },
+      { id: "physical-effects", label: "PHYSICAL EFFECTS", level: 3 },
+      { id: "side-effects", label: "SIDE EFFECTS", level: 3 },
+      { id: "will-child-regret", label: "WILL MY CHILD REGRET IT?", level: 3 },
+      { id: "types-blockers", label: "TYPES OF BLOCKERS", level: 3 },
+      { id: "next-steps", label: "NEXT STEPS", level: 3 },
+      { id: "how-administered", label: "HOW IS IT ADMINISTERED?", level: 3 },
+      { id: "where-how-get", label: "WHERE/HOW DO I GET THEM?", level: 4 },
+      { id: "changes-permanent", label: "ARE THE CHANGES PERMANENT?", level: 4 },
+      { id: "mediating-side-effects", label: "MEDIATING SIDE EFFECTS", level: 4 },
+      { id: "other-options", label: "OTHER OPTIONS", level: 4 },
+      { id: "how-frequently", label: "HOW FREQUENTLY?", level: 4 }
+    ];
+
+            return (
+                <button
+                    className={`px-3 py-2 rounded-full font-medium text-white text-xs transition-all duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 cursor-pointer text-center whitespace-nowrap ${colorClasses}`}
+                    onClick={onClick}
+                >
+                    {node.label}
+                </button>
+            );
+    const contentSections = [
+      {
+        id: "puberty-blockers",
+        title: "PUBERTY BLOCKERS",
+        content: {
+          bullets: [
+            "Navigating gender-affirming care can be complex, overwhelming, and at times, even feel frightening.",
+            "To use the flowchart, click on the questions that are most relevant to you."
+          ]
+        }
+
+        function ContentDisplay({ content, isActive }) {
+            if (!isActive) return null;
+
+            return (
+                <div className="bg-purple-700 text-white p-8 rounded-3xl max-w-4xl mx-auto mt-8">
+                    <h2 className="text-3xl font-bold mb-6 text-center">{content.title}</h2>
+                    
+                    <div className="space-y-6">
+                        {content.content.text && (
+                            <p className="text-lg mb-4 text-center font-medium">
+                                {content.content.text}
+                            </p>
+                        )}
+                        
+                        {content.content.bullets && (
+                            <ul className="space-y-3 text-lg list-disc list-inside">
+                                {content.content.bullets.map((bullet, index) => (
+                                    <li key={index}>{bullet}</li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                </div>
+            );
+      },
+      {
+        id: "who-uses-them",
+        title: "WHO USES THEM?",
+        content: {
+          text: "Puberty blockers are primarily used by transgender and gender non-conforming youth who experience gender dysphoria during puberty.",
+          bullets: [
+            "Young people exploring their gender identity",
+            "Those experiencing gender dysphoria",
+            "Youth needing time before irreversible changes begin"
+          ]
+        }
+      },
+      // Added all missing content sections:
+      {
         id: "are-they-safe",
         title: "ARE THEY SAFE?",
         content: {
@@ -235,47 +328,6 @@
       }
     ];
 
-        function FlowchartButton({ node, isActive, onClick }) {
-            const colorClasses = isActive 
-                ? "bg-purple-700 hover:bg-purple-800" 
-                : "bg-gray-400 hover:bg-gray-500";
-
-            return (
-                <button
-                    className={`px-3 py-2 rounded-full font-medium text-white text-xs transition-all duration-300 ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 cursor-pointer text-center whitespace-nowrap ${colorClasses}`}
-                    onClick={onClick}
-                >
-                    {node.label}
-                </button>
-            );
-        }
-
-        function ContentDisplay({ content, isActive }) {
-            if (!isActive) return null;
-
-            return (
-                <div className="bg-purple-700 text-white p-8 rounded-3xl max-w-4xl mx-auto mt-8">
-                    <h2 className="text-3xl font-bold mb-6 text-center">{content.title}</h2>
-                    
-                    <div className="space-y-6">
-                        {content.content.text && (
-                            <p className="text-lg mb-4 text-center font-medium">
-                                {content.content.text}
-                            </p>
-                        )}
-                        
-                        {content.content.bullets && (
-                            <ul className="space-y-3 text-lg list-disc list-inside">
-                                {content.content.bullets.map((bullet, index) => (
-                                    <li key={index}>{bullet}</li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-                </div>
-            );
-        }
-
         function FlowchartDiagram({ activeNodeId, onNodeClick }) {
             return (
                 <div className="relative mb-12 p-8 min-h-[400px] max-w-7xl mx-auto">
@@ -289,14 +341,14 @@
                         </defs>
                         
                         {/* 3 arrows from PUBERTY BLOCKERS to main categories */}
-                        <line x1="50%" y1="50" x2="30%" y2="90" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        <line x1="50%" y1="50" x2="50%" y2="82" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        <line x1="50%" y1="50" x2="75%" y2="90" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="50%" y1="50" x2="20%" y2="110" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="50%" y1="50" x2="50%" y2="110" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="50%" y1="50" x2="80%" y2="110" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
                         
                         {/* Additional arrows for subcategories */}
-                        <line x1="20%" y1="130" x2="15%" y2="165" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        <line x1="20%" y1="130" x2="25%" y2="165" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
-                        <line x1="20%" y1="130" x2="35%" y2="165" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="20%" y1="140" x2="10%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="20%" y1="140" x2="20%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
+                        <line x1="20%" y1="140" x2="30%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
                         
                         <line x1="50%" y1="140" x2="43%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
                         <line x1="50%" y1="140" x2="57%" y2="200" stroke="#6B7280" strokeWidth="2" markerEnd="url(#arrowhead)" />
@@ -321,7 +373,7 @@
                             onClick={() => onNodeClick('puberty-blockers')}
                         />
                     </div>
-
+                    
                     {/* Level 2 - Main Categories */}
                     <div className="absolute top-20" style={{ zIndex: 10, width: '100%' }}>
                         <div className="absolute left-[20%] transform -translate-x-1/2">
@@ -346,6 +398,19 @@
                             />
                         </div>
                     </div>
+    function FlowchartButton({ node, isActive, onClick }) {
+      const colorClasses = isActive
+        ? "bg-purple-700 hover:bg-purple-800"
+        : "bg-gray-400 hover:bg-gray-500";
+      return (
+        <button
+          className={`px-3 py-2 rounded-full font-medium text-white text-xs transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-400 ${colorClasses}`}
+          onClick={() => onClick(node.id)}
+        >
+          {node.label}
+        </button>
+      );
+    }
 
                     {/* Level 3 - Sub Categories */}
                     <div className="absolute top-40" style={{ zIndex: 10, width: '100%' }}>
@@ -406,6 +471,32 @@
                             />
                         </div>
                     </div>
+    function ContentDisplay({ content }) {
+      if (!content) {
+        return (
+          <div className="bg-red-100 text-red-700 p-6 rounded-xl max-w-2xl mx-auto mt-8 text-center">
+            Content for this section is not available yet.
+          </div>
+        );
+      }
+      return (
+        <div className="bg-purple-700 text-white p-8 rounded-3xl max-w-4xl mx-auto mt-8">
+          <h2 className="text-3xl font-bold mb-6 text-center">{content.title}</h2>
+          <div className="space-y-6">
+            {content.content.text && (
+              <p className="text-lg mb-4 text-center font-medium">{content.content.text}</p>
+            )}
+            {content.content.bullets && (
+              <ul className="space-y-3 text-lg list-disc list-inside">
+                {content.content.bullets.map((bullet, i) => (
+                  <li key={i}>{bullet}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      );
+    }
 
                     {/* Level 4 - Bottom row */}
                     <div className="absolute top-64" style={{ zIndex: 10, width: '100%' }}>
@@ -446,12 +537,55 @@
                         </div>
                     </div>
                 </div>
+    function FlowchartDiagram({ activeNodeId, onNodeClick }) {
+      // SVG and layout code remain unchanged
+      // [...]
+      return (
+        <div className="relative mb-12 p-8 min-h-[400px] max-w-7xl mx-auto">
+          {/* Existing SVG and .map() rendering code */}
+          {flowchartNodes.map(node => {
+            const topMap = {1: "top-4", 2: "top-20", 3: "top-40", 4: "top-64"};
+            const posMap = {
+              "puberty-blockers": "left-1/2 transform -translate-x-1/2",
+              "who-uses-them": "left-[20%] transform -translate-x-1/2",
+              "are-they-safe": "left-[50%] transform -translate-x-1/2",
+              "how-do-they-work": "left-[80%] transform -translate-x-1/2",
+              "social-effects": "left-[10%] transform -translate-x-1/2",
+              "criteria-prescription": "left-[20%] transform -translate-x-1/2",
+              "physical-effects": "left-[30%] transform -translate-x-1/2",
+              "side-effects": "left-[43%] transform -translate-x-1/2",
+              "will-child-regret": "left-[57%] transform -translate-x-1/2",
+              "types-blockers": "left-[70%] transform -translate-x-1/2",
+              "next-steps": "left-[80%] transform -translate-x-1/2",
+              "how-administered": "left-[90%] transform -translate-x-1/2",
+              "where-how-get": "left-[15%] transform -translate-x-1/2",
+              "changes-permanent": "left-[35%] transform -translate-x-1/2",
+              "mediating-side-effects": "left-[55%] transform -translate-x-1/2",
+              "other-options": "left-[75%] transform -translate-x-1/2",
+              "how-frequently": "left-[95%] transform -translate-x-1/2"
+            };
+            return (
+              <div key={node.id} className={`absolute ${topMap[node.level]} ${posMap[node.id]} z-10`}>
+                <FlowchartButton
+                  node={node}
+                  isActive={activeNodeId === node.id}
+                  onClick={onNodeClick}
+                />
+              </div>
             );
         }
+          })}
+          {/* keep your SVG connecting arrows unchanged */}
+        </div>
+      );
+    }
 
         function FlowchartApp() {
             const [activeNodeId, setActiveNodeId] = useState('puberty-blockers');
             const activeContent = contentSections.find(section => section.id === activeNodeId);
+    function FlowchartApp() {
+      const [activeNodeId, setActiveNodeId] = useState("puberty-blockers");
+      const activeContent = contentSections.find(s => s.id === activeNodeId);
 
             return (
                 <div className="min-h-screen py-8 px-4 bg-gray-50">
@@ -462,8 +596,24 @@
                 </div>
             );
         }
+      return (
+        <div className="min-h-screen py-8 px-4 bg-gray-50">
+          <div className="max-w-7xl mx-auto">
+            <FlowchartDiagram activeNodeId={activeNodeId} onNodeClick={setActiveNodeId} />
+            <ContentDisplay content={activeContent} />
+          </div>
+        </div>
+      );
+    }
 
         ReactDOM.render(<FlowchartApp />, document.getElementById('root'));
     </script>
+    ReactDOM.render(<FlowchartApp />, document.getElementById("root"));
+  </script>
 </body>
 </html>
+
+
+
+
+
