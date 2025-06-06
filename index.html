@@ -277,7 +277,7 @@ function FlowchartDiagram({ activeNodeId, onNodeClick }) {
     "side-effects": 43,
     "will-child-regret": 57,
     "types-blockers": 75,
-    "next-steps": 90,
+    "next-steps": 85,
     "how-administered": 100,
     "where-how-get": 15,
     "changes-permanent": 35,
@@ -293,11 +293,31 @@ function FlowchartDiagram({ activeNodeId, onNodeClick }) {
   };
 
   const arrows = [
-    ["puberty-blockers", "who-uses-them"],
-    ["puberty-blockers", "are-they-safe"],
-    ["puberty-blockers", "how-do-they-work"],
-    // Add more connections here if needed
-  ];
+  // From Level 1
+  ["puberty-blockers", "who-uses-them"],
+  ["puberty-blockers", "are-they-safe"],
+  ["puberty-blockers", "how-do-they-work"],
+
+  // WHO USES THEM → SOCIAL EFFECTS, CRITERIA, PHYSICAL EFFECTS
+  ["who-uses-them", "social-effects"],
+  ["who-uses-them", "criteria-prescription"],
+  ["who-uses-them", "physical-effects"],
+
+  // ARE THEY SAFE → SIDE EFFECTS, WILL CHILD REGRET IT?
+  ["are-they-safe", "side-effects"],
+  ["are-they-safe", "will-child-regret"],
+
+  // HOW DO THEY WORK → TYPES, NEXT STEPS, ADMINISTERED
+  ["how-do-they-work", "types-blockers"],
+  ["how-do-they-work", "next-steps"],
+  ["how-do-they-work", "how-administered"]
+
+    // CRITERIA FOR PRESCRIPTION → WHERE/HOW DO I GET THEM
+    ["criteria-prescription", "where-how-get"]
+
+    // PHYSICAL EFFECTS → ARE CHANGES PERMANENT? 
+    ["physical-effects", "changes-permanent"] 
+];
 
   return (
     <div className="relative mb-12 p-8 min-h-[600px] max-w-7xl mx-auto">
