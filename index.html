@@ -264,46 +264,100 @@
       );
     }
 
-    function FlowchartDiagram({ activeNodeId, onNodeClick }) {
-      // SVG and layout code remain unchanged
-      // [...]
-      return (
-        <div className="relative mb-12 p-8 min-h-[400px] max-w-7xl mx-auto">
-          {/* Existing SVG and .map() rendering code */}
-          {flowchartNodes.map(node => {
-            const topMap = {1: "top-4", 2: "top-20", 3: "top-40", 4: "top-64"};
-            const posMap = {
-              "puberty-blockers": "left-1/2 transform -translate-x-1/2",
-              "who-uses-them": "left-[20%] transform -translate-x-1/2",
-              "are-they-safe": "left-[50%] transform -translate-x-1/2",
-              "how-do-they-work": "left-[80%] transform -translate-x-1/2",
-              "social-effects": "left-[10%] transform -translate-x-1/2",
-              "criteria-prescription": "left-[20%] transform -translate-x-1/2",
-              "physical-effects": "left-[30%] transform -translate-x-1/2",
-              "side-effects": "left-[43%] transform -translate-x-1/2",
-              "will-child-regret": "left-[57%] transform -translate-x-1/2",
-              "types-blockers": "left-[70%] transform -translate-x-1/2",
-              "next-steps": "left-[80%] transform -translate-x-1/2",
-              "how-administered": "left-[90%] transform -translate-x-1/2",
-              "where-how-get": "left-[15%] transform -translate-x-1/2",
-              "changes-permanent": "left-[35%] transform -translate-x-1/2",
-              "mediating-side-effects": "left-[55%] transform -translate-x-1/2",
-              "other-options": "left-[75%] transform -translate-x-1/2",
-              "how-frequently": "left-[95%] transform -translate-x-1/2"
-            };
-            return (
-              <div key={node.id} className={`absolute ${topMap[node.level]} ${posMap[node.id]} z-10`}>
-                <FlowchartButton
-                  node={node}
-                  isActive={activeNodeId === node.id}
-                  onClick={onNodeClick}
-                />
-              </div>
-            );
-          })}
-        </div>
-      );
-    }
+function FlowchartDiagram({ activeNodeId, onNodeClick }) {
+  const topMap = {1: 64, 2: 160, 3: 320, 4: 512}; // pixel positions for vertical layout
+  const posMap = {
+    "puberty-blockers": 50,
+    "who-uses-them": 20,
+    "are-they-safe": 50,
+    "how-do-they-work": 80,
+    "social-effects": 10,
+    "criteria-prescription": 20,
+    "physical-effects": 30,
+    "side-effects": 43,
+    "will-child-regret": 57,
+    "types-blockers": 70,
+    "next-steps": 80,
+    "how-administered": 90,
+    "where-how-get": 15,
+    "changes-permanent": 35,
+    "mediating-side-effects": 55,
+    "other-options": 75,
+    "how-frequently": 95
+  };
+
+  const getCoords = (id) => {
+    const x = (posMap[id] / 100) * 1000; // Width base 1000
+    const y = topMap[flowchartNodes.find(n => n.id === id).level];
+    return { x, y };
+  };
+
+  const arrows = [
+    ["puberty-blockers", "who-uses-them"],
+    ["puberty-blockers", "are-they-safe"],
+    ["puberty-blockers", "how-do-they-work"],
+    // Add more connections here if needed
+  ];
+
+  return (
+    <div className="relative mb-12 p-8 min-h-[600px] max-w-7xl mx-auto">
+      {/* SVG arrows background */}
+      <svg
+        className="absolute inset-0 w-full h-full z-0"
+        viewBox="0 0 1000 600"
+        preserveAspectRatio="none"
+      >
+        {arrows.map(([fromId, toId], index) => {
+          const from = getCoords(fromId);
+          const to = getCoords(toId);
+          return (
+            <line
+              key={index}
+              x1={from.x}
+              y1={from.y + 20} // bottom of the button
+              x2={to.x}
+              y2={to.y - 20} // top of next button
+              stroke="gray"
+              strokeWidth="2"
+              markerEnd="url(#arrowhead)"
+            />
+          );
+        })}
+        <defs>
+          <marker
+            id="arrowhead"
+            markerWidth="10"
+            markerHeight="7"
+            refX="0"
+            refY="3.5"
+            orient="auto"
+            markerUnits="strokeWidth"
+          >
+            <polygon points="0 0, 10 3.5, 0 7" fill="gray" />
+          </marker>
+        </defs>
+      </svg>
+
+      {/* Render all flowchart nodes */}
+      {flowchartNodes.map((node) => {
+        const topClass = `top-[${topMap[node.level]}px]`;
+        const leftClass = `left-[${posMap[node.id]}%] transform -translate-x-1/2`;
+        return (
+          <div
+            key={node.id}
+            className={`absolute ${topClass} ${leftClass} z-10`}
+          >
+            <FlowchartButton
+              node={node}
+              isActive={activeNodeId === node.id}
+              onClick={onNodeClick}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
     function FlowchartApp() {
       const [activeNodeId, setActiveNodeId] = useState("puberty-blockers");
