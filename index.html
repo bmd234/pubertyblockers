@@ -22,6 +22,8 @@
       { id: "social-effects", label: "SOCIAL EFFECTS", level: 3 },
       { id: "criteria-prescription", label: "CRITERIA FOR PRESCRIPTION", level: 3 },
       { id: "physical-effects", label: "PHYSICAL EFFECTS", level: 3 },
+      { id: "lt-side-effects", label: "LONG-TERM SIDE EFFECTS", level: 3 },
+      { id: "st-side-effects", label: "SHORT-TERM SIDE EFFECTS", level: 5 },
       { id: "side-effects", label: "SIDE EFFECTS", level: 3 },
       { id: "will-child-regret", label: "WILL MY CHILD REGRET IT?", level: 3 },
       { id: "types-blockers", label: "TYPES OF BLOCKERS", level: 3 },
@@ -109,8 +111,27 @@
         }
       },
       {
-        id: "side-effects",
-        title: "SIDE EFFECTS",
+        id: "st-side-effects",
+        title: "SHORT-TERM SIDE EFFECTS",
+        content: {
+          text: "Long-term and short-term side effects may impact:",
+          bullets: [
+            "Growth spurts",
+            "Bone growth",
+            "Bone density",
+            "Fertility, depending on when medicine is first taken",
+            "If assigned male at birth, and starting blockers in early puberty, one may not develop enough skin on the penis and scrotum to have some types of gender-affirming surgeries later on. Alternative surgery approaches are usually are available.",
+            "Swelling at the site of the shot",
+            "Weight gain",
+            "Hot flashes",
+            "Headaches",
+            "Mood changes"
+          ]
+        }
+      },
+      {
+        id: "lt-side-effects",
+        title: "LONG-TERM SIDE EFFECTS",
         content: {
           text: "Long-term and short-term side effects may impact:",
           bullets: [
@@ -268,7 +289,7 @@
     }
 
 function FlowchartDiagram({ activeNodeId, onNodeClick }) {
-  const topMap = {1: 64, 2: 160, 3: 320, 4: 512}; // pixel positions for vertical layout
+  const topMap = {1: 64, 2: 160, 3: 320, 4: 512, 5: 416}; // pixel positions for vertical layout
   const posMap = {
     "puberty-blockers": 50,
     "who-uses-them": 20,
@@ -277,7 +298,8 @@ function FlowchartDiagram({ activeNodeId, onNodeClick }) {
     "social-effects": 2,
     "criteria-prescription": 16,
     "physical-effects": 31,
-    "side-effects": 43,
+    "lt-side-effects": 43,
+    "st-side-effects": 43,
     "will-child-regret": 57,
     "types-blockers": 72,
     "next-steps": 85,
@@ -304,12 +326,13 @@ function FlowchartDiagram({ activeNodeId, onNodeClick }) {
     ["who-uses-them", "physical-effects"], 
     ["physical-effects", "changes-permanent"],
     ["criteria-prescription", "where-how-get"],
-    ["are-they-safe", "side-effects"], 
+    ["are-they-safe", "st-side-effects"], 
     ["are-they-safe", "will-child-regret"],
     ["how-do-they-work", "types-blockers"], 
     ["how-do-they-work", "next-steps"],
     ["how-do-they-work", "how-administered"],
-    ["side-effects", "managing-side-effects"], 
+    ["st-side-effects", "lt-side-effects"], 
+    ["lt-side-effects", "managing-side-effects"], 
     ["will-child-regret", "other-options"],
     ["how-administered", "how-frequently"], 
     
