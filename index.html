@@ -352,39 +352,41 @@
     };
 
     function ContentDisplay({ content }) {
-      if (!content) {
-        return (
-          <div className="bg-red-100 text-red-700 p-6 rounded-xl max-w-2xl mx-auto mt-8 text-center">
-            Content for this section is not available yet.
-          </div>
-        );
-      }
-      return (
-        <div className="bg-purple-700 text-white p-8 rounded-3xl max-w-4xl mx-auto mt-8">
-          <h2 className="text-3xl font-bold mb-6 text-center">{content.title}</h2>
-          <div className="space-y-6">
-            content.layout == "image"
-            ? (<SymmetricGrid data={content.content} />)
-            : ({
-              {
-                  content.content.text && ( <p className = "text-lg mb-4 text-center font-medium"> {
-                          content.content.text
-                      } </p>
-                  )
-              } {
-                  content.content.bullets && ( <ul className = "space-y-3 text-lg list-disc list-inside"> {
-                          content.content.bullets.map((bullet, i) => ( <li key = {i}> {
-                                  bullet
-                              } </li>
-                          ))
-                      } </ul>
-                  )
-              }
-          })
-          </div>
-        </div>
-      );
-    }
+  if (!content) {
+    return (
+      <div className="bg-red-100 text-red-700 p-6 rounded-xl max-w-2xl mx-auto mt-8 text-center">
+        Content for this section is not available yet.
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-purple-700 text-white p-8 rounded-3xl max-w-4xl mx-auto mt-8">
+      <h2 className="text-3xl font-bold mb-6 text-center">{content.title}</h2>
+      <div className="space-y-6">
+        {content.layout === "image" ? (
+          <SymmetricGrid data={content.content} />
+        ) : (
+          <>
+            {content.content.text && (
+              <p className="text-lg mb-4 text-center font-medium">
+                {content.content.text}
+              </p>
+            )}
+
+            {content.content.bullets && (
+              <ul className="space-y-3 text-lg list-disc list-inside">
+                {content.content.bullets.map((bullet, i) => (
+                  <li key={i}>{bullet}</li>
+                ))}
+              </ul>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
 
 function FlowchartDiagram({ activeNodeId, onNodeClick }) {
   const topMap = {1: 64, 2: 160, 3: 320, 4: 512, 5: 416}; // pixel positions for vertical layout
