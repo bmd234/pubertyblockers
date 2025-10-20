@@ -57,6 +57,7 @@
           ]
         }
       },
+      // Added all missing content sections:
       {
         id: "are-they-safe",
         title: "ARE THEY SAFE?",
@@ -82,7 +83,7 @@
         title: "SOCIAL EFFECTS",
         content: {
           bullets: [
-            "Puberty Blockers may allow for youth to find comfort and satisfaction in their own body instead of feeling the discomfort that transgender children often feel when undergoing puberty.",
+            "Puberty Blockers may allow for youth to comfort and satisfaction in their own body instead of feeling the discomfort that transgender children often feel when undergoing puberty. Feeling comfortable means reduced negative experiences: sensory discomfort in clothing, shame when seeing one’s image or reflection, or self-consciousness when speaking.",
             "Commonly, transgender people want to be recognized by others as their identified gender, and to not have their gender misclassified by others. Puberty Blockers limit misperception and misgendering, allowing social interactions to be validating rather than exclusionary."
           ]
         }
@@ -92,10 +93,10 @@
         title: "CRITERIA FOR PRESCRIPTION",
         content: {
           bullets: [
-            "Has a diagnosis of persistent, well-documented gender dysphoria or incongruence from trained providers.",
-            "Has had a review of co-existing conditions by healthcare providers.",
-            "Risks, complications, and benefits have been discussed in detail.", 
-            "Consent has been given by the patient and their guardians."
+            "Has a diagnosis of persistent well-documented gender dysphoria or gender incongruence from trained health care provider(s).",
+            "Has had a review of co-existing conditions by health care provider(s).",
+            "Potential risks, complications, and benefits have been discussed in detail.", 
+            "Consent has been given from the patient and their guardians."
           ]
         }
       },
@@ -105,35 +106,40 @@
         layout: "image",
         content: {
           title: "PHYSICAL EFFECTS",
-          extraImage: "physical effects.jpg", // ✅ Added this line
           left: {
             subtitle: "ASSIGNED FEMALE AT BIRTH",
-            image: "female.png",
+            image: "female.png", // placeholder
             infoboxes: [
               "Prevents development of sex drive",
               "Stops breast development",
               "Stops menstruation*",
-              "Prevents hip broadening"
-            ]
+              "Prevents hip broadening",
+            ],
           },
           right: {
             subtitle: "ASSIGNED MALE AT BIRTH",
-            image: "male.png",
+            image: "male.png", // placeholder
             infoboxes: [
               "Prevents development of sex drive",
               "Slows growth of facial & body hair",
               "Prevents broadening of shoulders",
               "Limits growth of Adam’s Apple & prevents voice deepening",
-              "Limits penis, scrotum, & testicle growth"
-            ]
-          }
+              "Limits penis, scrotum, & testicle growth",
+            ],
+          },
         }
       },
       {
         id: "st-side-effects",
         title: "SHORT-TERM SIDE EFFECTS",
         content: {
+          text: "Long-term and short-term side effects may impact:",
           bullets: [
+            "Growth spurts",
+            "Bone growth",
+            "Bone density",
+            "Fertility, depending on when medicine is first taken",
+            "If assigned male at birth, and starting blockers in early puberty, one may not develop enough skin on the penis and scrotum to have some types of gender-affirming surgeries later on. Alternative surgery approaches are usually are available.",
             "Swelling at the site of the shot",
             "Weight gain",
             "Hot flashes",
@@ -146,9 +152,18 @@
         id: "lt-side-effects",
         title: "LONG-TERM SIDE EFFECTS",
         content: {
+          text: "Long-term and short-term side effects may impact:",
           bullets: [
-            "May affect growth spurts, bone growth, or bone density",
-            "Possible effects on fertility depending on when started"
+            "Growth spurts",
+            "Bone growth",
+            "Bone density",
+            "Fertility, depending on when medicine is first taken",
+            "If assigned male at birth, and starting blockers in early puberty, one may not develop enough skin on the penis and scrotum to have some types of gender-affirming surgeries later on. Alternative surgery approaches are usually are available.",
+            "Swelling at the site of the shot",
+            "Weight gain",
+            "Hot flashes",
+            "Headaches",
+            "Mood changes"
           ]
         }
       },
@@ -157,8 +172,8 @@
         title: "WILL MY CHILD REGRET IT?",
         content: {
           bullets: [
-            "If your child stops taking Puberty Blockers, puberty resumes.",
-            "Less than 5% of trans teens report regret regarding puberty blockers."
+            "If your child regrets taking Puberty Blockers, they may choose to stop taking them at any time. Upon discontinuation, puberty will resume. Your child may then choose to pursue other gender-affirming care options at this time.",
+            "Less than 5% of trans teens report regret with some aspect of their gender-affirming care related to hormones or puberty blockers"
           ]
         }
       },
@@ -167,8 +182,9 @@
         title: "TYPES OF BLOCKERS",
         content: {
           bullets: [
-            "A flexible rod called histrelin acetate lasts for 1 year.",
-            "An injection called leuprolide acetate works for 1–4 months at a time."
+            "A flexible rod called histrelin acetate goes under the skin of the arm and lasts for 1 year.",
+            "A shot called leuprolide acetate works for 1, 3, or 4 months at a time.",
+            "Anti-androgens are another kind of medicine which have a similar effect to GnRHs. People  who were assigned male at birth can also take these to lower testosterone levels."
           ]
         }
       },
@@ -177,14 +193,80 @@
         title: "NEXT STEPS",
         content: {
           bullets: [
-            "Youth may discontinue blockers to allow puberty to continue.",
-            "They may also transition to hormone replacement therapy around 16."
+            "If your child chooses to, they can discontinue puberty blockers, which allows for puberty to continue",
+            "Alternatively, they may switch from puberty blockers to hormone replacement therapy at ~16 yrs old"
+          ]
+        }
+      },
+      {
+        id: "how-administered",
+        title: "HOW IS IT ADMINISTERED?",
+        content: {
+          bullets: [
+            "The first option is an arm implant under the skin",
+            "The second option is an injection." 
+          ]
+        }
+      },
+      {
+        id: "where-how-get",
+        title: "WHERE/HOW DO I GET THEM?",
+        content: {
+          bullets: [
+            "Puberty Blockers are prescribed by doctors, including: some primary care providers, pediatric endocrinologists, gender-affirming care specialists, & more.",
+            "Puberty Blockers are not legal in every U.S. state",
+            "Insurance coverage varies"
+          ]
+        }
+      },
+      {
+        id: "changes-permanent",
+        title: "ARE THE CHANGES PERMANENT?",
+        content: {
+          bullets: [
+            "Changes are not permanent.",
+            "When a person stops taking Puberty Blockers, puberty begins again.",
+            "Puberty blockers allow youth to explore gender identity, and give families time to plan for future medical, legal, mental, and social steps."
+          ]
+        }
+      },
+      {
+        id: "managing-side-effects",
+        title: "MANAGING SIDE EFFECTS",
+        content: {
+          bullets: [
+            "Patients should have their height checked every few months",
+            "Yearly bone density & bone age tests may be advised to support bone health",
+            "Youth taking puberty blockers may need to take calcium and vitamin D supplements"
+          ]
+        }
+      },
+      {
+        id: "other-options",
+        title: "OTHER OPTIONS",
+        content: {
+          bullets: [
+            "Hormone replacement therapy",
+            "Chest binding (Assigned Female at Birth)",
+            "Tucking (Assigned Male at Birth)",
+            "Gender affirming surgeries",
+            "Social transitioning (Picking a gender-affirming name, changing appearance or expression, etc.)"
+          ]
+        }
+      },
+      {
+        id: "how-frequently",
+        title: "HOW FREQUENTLY?",
+        content: {
+          bullets: [
+            "The flexible rod that goes under the skin of the arm lasts for 1 year.",
+            "The injection works for 1, 3, or 4 months at a time."
           ]
         }
       }
     ];
 
-    const FlowchartButton = ({ node, isActive, onClick }) => {
+    function FlowchartButton({ node, isActive, onClick }) {
       const colorClasses = isActive
         ? "bg-purple-700 hover:bg-purple-800"
         : "bg-gray-400 hover:bg-gray-500";
@@ -196,14 +278,15 @@
           {node.label}
         </button>
       );
-    };
+    }
 
     const SymmetricGrid = ({ data }) => {
-      const { title, left, right, extraImage } = data;
+      const { title, left, right } = data;
+    
       const processBoxes = (boxes) => {
-        const grid = Array(6).fill(null);
-        const outer = [0, 1, 2];
-        const inner = [5, 4, 3];
+        const grid = Array(6).fill(null); // 3x2 = 6 slots, fill unused with null
+        const outer = [0, 1, 2]; // Top to bottom
+        const inner = [5, 4, 3]; // Bottom to top
         let i = 0;
         for (const idx of [...outer, ...inner]) {
           if (i < boxes.length) {
@@ -213,41 +296,54 @@
         }
         return grid;
       };
-      const BoxGrid = ({ boxes }) => {
+    
+      const BoxGrid = ({ boxes, side }) => {
         const grid = processBoxes(boxes);
         return (
           <div className="grid grid-rows-3 grid-cols-2 gap-2 w-40">
             {grid.map((box, idx) => (
-              <div key={idx} className={`rounded-lg p-2 text-sm text-white h-16 flex items-center justify-center ${box ? 'bg-purple-500' : 'invisible'}`}>
+              <div
+                key={idx}
+                className={`rounded-lg p-2 text-sm text-white h-16 flex items-center justify-center ${
+                  box
+                    ? `bg-${['red', 'blue', 'green', 'purple', 'yellow'][idx % 5]}-500`
+                    : 'invisible'
+                }`}
+              >
                 {box}
               </div>
             ))}
           </div>
         );
       };
+    
       return (
         <div className="flex flex-col items-center gap-6">
           <h1 className="text-3xl font-bold">{title}</h1>
-          {extraImage && (
-            <img
-              src={extraImage}
-              alt="Physical Effects Overview"
-              className="w-96 rounded-2xl shadow-lg mb-4"
-            />
-          )}
           <div className="flex flex-row justify-center items-start gap-12">
+            {/* Left Side */}
             <div className="flex flex-row-reverse gap-4 items-start">
-              <img src={left.image} alt={left.subtitle} className="w-40 h-40 object-cover rounded-lg" />
+              <img
+                src={left.image}
+                alt={left.subtitle}
+                className="w-40 h-40 object-cover rounded-lg"
+              />
               <div className="flex flex-col items-end">
                 <h2 className="text-lg font-semibold mb-2">{left.subtitle}</h2>
-                <BoxGrid boxes={left.infoboxes} />
+                <BoxGrid boxes={left.infoboxes} side="left" />
               </div>
             </div>
+    
+            {/* Right Side */}
             <div className="flex flex-row gap-4 items-start">
-              <img src={right.image} alt={right.subtitle} className="w-40 h-40 object-cover rounded-lg" />
+              <img
+                src={right.image}
+                alt={right.subtitle}
+                className="w-40 h-40 object-cover rounded-lg"
+              />
               <div className="flex flex-col items-start">
                 <h2 className="text-lg font-semibold mb-2">{right.subtitle}</h2>
-                <BoxGrid boxes={right.infoboxes} />
+                <BoxGrid boxes={right.infoboxes} side="right" />
               </div>
             </div>
           </div>
@@ -255,82 +351,168 @@
       );
     };
 
-    const ContentDisplay = ({ content }) => {
-      if (!content)
-        return <div className="bg-red-100 text-red-700 p-6 rounded-xl text-center">Content unavailable.</div>;
-      return (
-        <div className="bg-purple-700 text-white p-8 rounded-3xl max-w-4xl mx-auto mt-8">
-          <h2 className="text-3xl font-bold mb-6 text-center">{content.title}</h2>
-          {content.layout === "image" ? (
-            <SymmetricGrid data={content.content} />
-          ) : (
-            <>
-              {content.content.text && <p className="text-lg mb-4">{content.content.text}</p>}
-              {content.content.bullets && (
-                <ul className="list-disc list-inside space-y-2 text-lg">
-                  {content.content.bullets.map((b, i) => <li key={i}>{b}</li>)}
-                </ul>
-              )}
-            </>
-          )}
-        </div>
-      );
-    };
+    function ContentDisplay({ content }) {
+  if (!content) {
+    return (
+      <div className="bg-red-100 text-red-700 p-6 rounded-xl max-w-2xl mx-auto mt-8 text-center">
+        Content for this section is not available yet.
+      </div>
+    );
+  }
 
-    const FlowchartDiagram = ({ activeNodeId, onNodeClick }) => {
-      const topMap = {1: 64, 2: 160, 3: 320, 4: 512, 5: 416};
-      const posMap = {"puberty-blockers":50,"who-uses-them":20,"are-they-safe":50,"how-do-they-work":80,"social-effects":2,"criteria-prescription":15,"physical-effects":29,"lt-side-effects":43,"st-side-effects":43,"will-child-regret":59,"types-blockers":74,"next-steps":85,"how-administered":96};
-      const getCoords = id => {
-        const x = (posMap[id] / 100) * 1000;
-        const y = topMap[flowchartNodes.find(n => n.id === id).level];
-        return { x, y };
-      };
-      const arrows = [
-        ["puberty-blockers","who-uses-them"],
-        ["puberty-blockers","are-they-safe"],
-        ["puberty-blockers","how-do-they-work"],
-        ["who-uses-them","physical-effects"],
-        ["physical-effects","lt-side-effects"],
-        ["how-do-they-work","next-steps"]
-      ];
-      return (
-        <div className="relative mb-12 p-8 min-h-[600px] max-w-7xl mx-auto">
-          <svg className="absolute inset-0 w-full h-full z-0" viewBox="0 0 1000 600" preserveAspectRatio="none">
-            {arrows.map(([fromId,toId],i)=>{
-              const f=getCoords(fromId);const t=getCoords(toId);
-              return <line key={i} x1={f.x} y1={f.y+20} x2={t.x} y2={t.y-20} stroke="gray" strokeWidth="2" markerEnd="url(#arrowhead)" />;
-            })}
-            <defs>
-              <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-                <polygon points="0 0, 10 3.5, 0 7" fill="gray" />
-              </marker>
-            </defs>
-          </svg>
-          {flowchartNodes.map(node=>{
-            const topClass=`top-[${topMap[node.level]}px]`;
-            const leftClass=`left-[${posMap[node.id]}%] transform -translate-x-1/2`;
-            return (
-              <div key={node.id} className={`absolute ${topClass} ${leftClass} z-10`}>
-                <FlowchartButton node={node} isActive={activeNodeId===node.id} onClick={onNodeClick}/>
-              </div>
-            );
-          })}
-        </div>
-      );
-    };
+  return (
+    <div className="bg-purple-700 text-white p-8 rounded-3xl max-w-4xl mx-auto mt-8">
+      <h2 className="text-3xl font-bold mb-6 text-center">{content.title}</h2>
+      <div className="space-y-6">
+        {content.layout === "image" ? (
+          <SymmetricGrid data={content.content} />
+        ) : (
+          <>
+            {content.content.text && (
+              <p className="text-lg mb-4 text-center font-medium">
+                {content.content.text}
+              </p>
+            )}
 
-    const FlowchartApp = () => {
+            {content.content.bullets && (
+              <ul className="space-y-3 text-lg list-disc list-inside">
+                {content.content.bullets.map((bullet, i) => (
+                  <li key={i}>{bullet}</li>
+                ))}
+              </ul>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function FlowchartDiagram({ activeNodeId, onNodeClick }) {
+  const topMap = {1: 64, 2: 160, 3: 320, 4: 512, 5: 416}; // pixel positions for vertical layout
+  const posMap = {
+    "puberty-blockers": 50,
+    "who-uses-them": 20,
+    "are-they-safe": 50,
+    "how-do-they-work": 80,
+    "social-effects": 2,
+    "criteria-prescription": 15,
+    "physical-effects": 29,
+    "lt-side-effects": 43,
+    "st-side-effects": 43,
+    "will-child-regret": 59,
+    "types-blockers": 74,
+    "next-steps": 85,
+    "how-administered": 96,
+    "where-how-get": 5,
+    "changes-permanent": 25,
+    "managing-side-effects": 45,
+    "other-options": 60,
+    "how-frequently": 95
+  };
+
+  const getCoords = (id) => {
+    const x = (posMap[id] / 100) * 1000; // Width base 1000
+    const y = topMap[flowchartNodes.find(n => n.id === id).level];
+    return { x, y };
+  };
+
+  const arrows = [
+    ["puberty-blockers", "who-uses-them"],
+    ["puberty-blockers", "are-they-safe"],
+    ["puberty-blockers", "how-do-they-work"],
+    ["who-uses-them", "social-effects"], 
+    ["who-uses-them", "criteria-prescription"],
+    ["who-uses-them", "physical-effects"], 
+    ["physical-effects", "changes-permanent"],
+    ["criteria-prescription", "where-how-get"],
+    ["are-they-safe", "st-side-effects"], 
+    ["are-they-safe", "will-child-regret"],
+    ["how-do-they-work", "types-blockers"], 
+    ["how-do-they-work", "next-steps"],
+    ["how-do-they-work", "how-administered"],
+    ["st-side-effects", "lt-side-effects"], 
+    ["lt-side-effects", "managing-side-effects"], 
+    ["will-child-regret", "other-options"],
+    ["how-administered", "how-frequently"], 
+    
+    
+    // Add more connections here if needed
+];
+
+  return (
+    <div className="relative mb-12 p-8 min-h-[600px] max-w-7xl mx-auto">
+      {/* SVG arrows background */}
+      <svg
+        className="absolute inset-0 w-full h-full z-0"
+        viewBox="0 0 1000 600"
+        preserveAspectRatio="none"
+      >
+        {arrows.map(([fromId, toId], index) => {
+          const from = getCoords(fromId);
+          const to = getCoords(toId);
+          return (
+            <line
+              key={index}
+              x1={from.x}
+              y1={from.y + 20} // bottom of the button
+              x2={to.x}
+              y2={to.y - 20} // top of next button
+              stroke="gray"
+              strokeWidth="2"
+              markerEnd="url(#arrowhead)"
+            />
+          );
+        })}
+        <defs>
+          <marker
+            id="arrowhead"
+            markerWidth="10"
+            markerHeight="7"
+            refX="0"
+            refY="3.5"
+            orient="auto"
+            markerUnits="strokeWidth"
+          >
+            <polygon points="0 0, 10 3.5, 0 7" fill="gray" />
+          </marker>
+        </defs>
+      </svg>
+
+      {/* Render all flowchart nodes */}
+      {flowchartNodes.map((node) => {
+        const topClass = `top-[${topMap[node.level]}px]`;
+        const leftClass = `left-[${posMap[node.id]}%] transform -translate-x-1/2`;
+        return (
+          <div
+            key={node.id}
+            className={`absolute ${topClass} ${leftClass} z-10`}
+          >
+            <FlowchartButton
+              node={node}
+              isActive={activeNodeId === node.id}
+              onClick={onNodeClick}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+    function FlowchartApp() {
       const [activeNodeId, setActiveNodeId] = useState("puberty-blockers");
       const activeContent = contentSections.find(s => s.id === activeNodeId);
+
       return (
         <div className="min-h-screen py-8 px-4 bg-gray-50">
           <div className="max-w-7xl mx-auto">
-            <FlowchartDiagram activeNodeId={activeNodeId} onNodeClick={setActiveNodeId}/>
-            <ContentDisplay content={activeContent}/>
+            <FlowchartDiagram activeNodeId={activeNodeId} onNodeClick={setActiveNodeId} />
+            <ContentDisplay content={activeContent} />
           </div>
         </div>
       );
-    };
+    }
 
     ReactDOM.render(<FlowchartApp />, document.getElementById("root"));
   </script>
