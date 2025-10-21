@@ -105,28 +105,8 @@
         title: "PHYSICAL EFFECTS",
         layout: "image",
         content: {
-          title: "PHYSICAL EFFECTS",
-          left: {
-            subtitle: "ASSIGNED FEMALE AT BIRTH",
-            image: "female.png", // placeholder
-            infoboxes: [
-              "Prevents development of sex drive",
-              "Stops breast development",
-              "Stops menstruation*",
-              "Prevents hip broadening",
-            ],
-          },
-          right: {
-            subtitle: "ASSIGNED MALE AT BIRTH",
-            image: "male.png", // placeholder
-            infoboxes: [
-              "Prevents development of sex drive",
-              "Slows growth of facial & body hair",
-              "Prevents broadening of shoulders",
-              "Limits growth of Adam’s Apple & prevents voice deepening",
-              "Limits penis, scrotum, & testicle growth",
-            ],
-          },
+          text: "*Menstruation may not always stop if it has already begun.",
+          bullets: []
         }
       },
       {
@@ -281,73 +261,25 @@
     }
 
     const SymmetricGrid = ({ data }) => {
-      const { title, left, right } = data;
-    
-      const processBoxes = (boxes) => {
-        const grid = Array(6).fill(null); // 3x2 = 6 slots, fill unused with null
-        const outer = [0, 1, 2]; // Top to bottom
-        const inner = [5, 4, 3]; // Bottom to top
-        let i = 0;
-        for (const idx of [...outer, ...inner]) {
-          if (i < boxes.length) {
-            grid[idx] = boxes[i];
-            i++;
-          }
-        }
-        return grid;
-      };
-    
-      const BoxGrid = ({ boxes, side }) => {
-        const grid = processBoxes(boxes);
-        return (
-          <div className="grid grid-rows-3 grid-cols-2 gap-2 w-40">
-            {grid.map((box, idx) => (
-              <div
-                key={idx}
-                className={`rounded-lg p-2 text-sm text-white h-16 flex items-center justify-center ${
-                  box
-                    ? `bg-${['red', 'blue', 'green', 'purple', 'yellow'][idx % 5]}-500`
-                    : 'invisible'
-                }`}
-              >
-                {box}
-              </div>
-            ))}
-          </div>
-        );
-      };
-    
       return (
-        <div className="flex flex-col items-center gap-6">
-          <h1 className="text-3xl font-bold">{title}</h1>
-          <div className="flex flex-row justify-center items-start gap-12">
-            {/* Left Side */}
-            <div className="flex flex-row-reverse gap-4 items-start">
-              <img
-                src={left.image}
-                alt={left.subtitle}
-                className="w-40 h-40 object-cover rounded-lg"
-              />
-              <div className="flex flex-col items-end">
-                <h2 className="text-lg font-semibold mb-2">{left.subtitle}</h2>
-                <BoxGrid boxes={left.infoboxes} side="left" />
-              </div>
-            </div>
-    
-            {/* Right Side */}
-            <div className="flex flex-row gap-4 items-start">
-              <img
-                src={right.image}
-                alt={right.subtitle}
-                className="w-40 h-40 object-cover rounded-lg"
-              />
-              <div className="flex flex-col items-start">
-                <h2 className="text-lg font-semibold mb-2">{right.subtitle}</h2>
-                <BoxGrid boxes={right.infoboxes} side="right" />
-              </div>
-            </div>
-          </div>
-        </div>
+        <>
+          <img className="" src="physical.png"></img>
+          <>
+              {data.text && (
+                <p className="text-lg mb-4 text-center font-medium">
+                  {data.text}
+                </p>
+              )}
+
+              {data.bullets && (
+                <ul className="space-y-3 text-lg list-disc list-inside">
+                  {data.bullets.map((bullet, i) => (
+                    <li key={i}>{bullet}</li>
+                  ))}
+                </ul>
+              )}
+            </>
+          </>
       );
     };
 
